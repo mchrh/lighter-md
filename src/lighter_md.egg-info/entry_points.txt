@@ -1,0 +1,2 @@
+[console_scripts]
+lighter-md = lighter_md.dashboard:main

@@ -1,0 +1,57 @@
+Metadata-Version: 2.4
+Name: lighter-md
+Version: 0.1.0
+Summary: Lighter.xyz market data streamer and dashboard
+Author: Your Team
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+Requires-Dist: websockets>=12.0
+Requires-Dist: orjson>=3.10
+Requires-Dist: pydantic>=2.7
+Requires-Dist: fastapi>=0.111
+Requires-Dist: uvicorn>=0.30
+Requires-Dist: jinja2>=3.1
+Requires-Dist: anyio>=4.3
+Requires-Dist: rich>=13.7
+Provides-Extra: dev
+Requires-Dist: pytest>=7.4; extra == "dev"
+
+# lighter-md
+
+Lighter.xyz market data streamer and real-time dashboard.
+
+## Features
+
+- Discovers every open market via `market_stats/all`, keeps a resilient single WebSocket connection, and automatically subscribes to per-market order books.
+- Normalises websocket payloads with Pydantic, maintains an in-memory store with debounced fan-out updates, and serves them over a FastAPI WebSocket endpoint.
+- Ships a minimal live dashboard (vanilla JS) that renders the full market table and patches rows in-place at up to 5 Hz per market.
+
+## Quickstart
+
+```bash
+uv venv --python 3.11
+uv sync
+uv run lighter-md          # start the FastAPI app (http://localhost:8000)
+```
+
+Run the test suite:
+
+```bash
+uv run pytest -q
+```
+
+## Architecture Overview
+
+Component | Responsibility
+--------- | ---------------
+`lighter_md.ws_manager` | Manages discovery, subscriptions, and reconnection/backoff.
+`lighter_md.store` | In-memory canonical state, top-of-book computation, diff emission.
+`lighter_md.bus` | Lightweight in-process pub/sub fan-out for UI consumers.
+`lighter_md.dashboard` | FastAPI app, HTTP routes, and the WebSocket endpoint for browsers.
+`lighter_md/static/app.js` | Browser client that maintains a sorted table and applies partial updates.
+
+## Screenshot
+
+![Dashboard screenshot](docs/screenshot.png)
+
+> Pair with `scripts/dev.sh` or `uv run lighter-md` for local development.

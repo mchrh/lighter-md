@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Lighter.xyz Markets</title>
+    <style>
+      :root {
+        color-scheme: dark;
+      }
+      body {
+        margin: 0;
+        font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        background-color: #0f172a;
+        color: #e2e8f0;
+      }
+      header {
+        padding: 16px 24px;
+        border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+      }
+      .header-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+      h1 {
+        margin: 0;
+        font-size: 20px;
+        font-weight: 600;
+      }
+      .nav {
+        display: inline-flex;
+        gap: 12px;
+        font-size: 14px;
+      }
+      .nav a {
+        color: #e2e8f0;
+        text-decoration: none;
+        opacity: 0.7;
+        transition: opacity 0.2s ease;
+      }
+      .nav a:hover,
+      .nav a.active {
+        opacity: 1;
+      }
+      main {
+        padding: 24px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background: rgba(15, 23, 42, 0.9);
+        backdrop-filter: blur(12px);
+        border-radius: 12px;
+        overflow: hidden;
+      }
+      thead {
+        background-color: rgba(30, 41, 59, 0.9);
+        position: sticky;
+        top: 0;
+        z-index: 1;
+      }
+      th,
+      td {
+        padding: 12px 16px;
+        text-align: right;
+        border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+        font-feature-settings: "tnum";
+        font-variant-numeric: tabular-nums;
+        white-space: nowrap;
+      }
+      th:first-child,
+      td:first-child {
+        text-align: left;
+      }
+      tbody tr:nth-child(even) {
+        background-color: rgba(15, 23, 42, 0.6);
+      }
+      tbody tr:hover {
+        background-color: rgba(59, 130, 246, 0.1);
+      }
+      .status {
+        margin-top: 12px;
+        font-size: 14px;
+        color: #94a3b8;
+      }
+      .status span {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .status-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: #16a34a;
+      }
+      .status-dot.down {
+        background-color: #dc2626;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="header-top">
+        <h1>Lighter.xyz Market Dashboard</h1>
+        <nav class="nav">
+          <a href="/" class="active">Markets</a>
+          <a href="/funding">Funding Z-Score</a>
+        </nav>
+      </div>
+      <div class="status" id="status">
+        <span><span class="status-dot"></span>Connecting…</span>
+      </div>
+    </header>
+    <main>
+      <table id="markets">
+        <thead>
+          <tr>
+            <th>Market</th>
+            <th>Best Bid Price</th>
+            <th>Best Bid Size</th>
+            <th>Best Ask Price</th>
+            <th>Best Ask Size</th>
+            <th>Mid Price</th>
+            <th>Spread (bps)</th>
+            <th>Last Price</th>
+            <th>Mark Price</th>
+            <th>Index Price</th>
+            <th>Basis</th>
+            <th>Markout</th>
+            <th>Daily Volume</th>
+            <th>Funding Rate</th>
+            <th>Open Interest</th>
+          </tr>
+        </thead>
+        <tbody id="markets-body"></tbody>
+      </table>
+    </main>
+    <script type="module" src="/static/app.js"></script>
+  </body>
+</html>

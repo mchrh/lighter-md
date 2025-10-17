@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Lighter.xyz Funding Z-Score</title>
+    <style>
+      :root {
+        color-scheme: dark;
+      }
+      body {
+        margin: 0;
+        font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        background-color: #0f172a;
+        color: #e2e8f0;
+      }
+      header {
+        padding: 16px 24px;
+        border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+      }
+      .header-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+      h1 {
+        margin: 0;
+        font-size: 20px;
+        font-weight: 600;
+      }
+      .nav {
+        display: inline-flex;
+        gap: 12px;
+        font-size: 14px;
+      }
+      .nav a {
+        color: #e2e8f0;
+        text-decoration: none;
+        opacity: 0.7;
+        transition: opacity 0.2s ease;
+      }
+      .nav a:hover,
+      .nav a.active {
+        opacity: 1;
+      }
+      main {
+        padding: 24px;
+      }
+      .panel {
+        max-width: 960px;
+        margin: 0 auto;
+        background: rgba(15, 23, 42, 0.95);
+        border-radius: 16px;
+        padding: 24px;
+        box-shadow: 0 20px 45px rgba(15, 23, 42, 0.4);
+      }
+      .panel-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 12px;
+        margin-bottom: 20px;
+      }
+      .panel-header h2 {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 600;
+      }
+      .timestamp {
+        font-size: 13px;
+        color: #94a3b8;
+      }
+      .chart {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .bar-row {
+        display: grid;
+        grid-template-columns: 140px 1fr 64px;
+        gap: 12px;
+        align-items: center;
+        font-size: 14px;
+      }
+      .symbol {
+        font-weight: 500;
+        color: #f1f5f9;
+      }
+      .bar-wrapper {
+        position: relative;
+        height: 18px;
+        background: rgba(30, 41, 59, 0.8);
+        border-radius: 9px;
+        overflow: hidden;
+      }
+      .bar-negative,
+      .bar-positive {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        height: 100%;
+        z-index: 1;
+      }
+      .bar-negative {
+        background: #f97316;
+      }
+      .bar-positive {
+        background: #facc15;
+      }
+      .zero-line {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        width: 1px;
+        background: rgba(148, 163, 184, 0.35);
+        z-index: 2;
+      }
+      .value {
+        text-align: right;
+        font-variant-numeric: tabular-nums;
+      }
+      .empty-state {
+        padding: 32px;
+        text-align: center;
+        color: #94a3b8;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="header-top">
+        <h1>Funding Rate Z-Score</h1>
+        <nav class="nav">
+          <a href="/">Markets</a>
+          <a href="/funding" class="active">Funding Z-Score</a>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <section class="panel">
+        <div class="panel-header">
+          <h2>Cross-Sectional Funding Signal</h2>
+          <div class="timestamp" id="funding-updated">Waiting for data…</div>
+        </div>
+        <div id="funding-chart" class="chart">
+          <div class="empty-state">Waiting for funding updates…</div>
+        </div>
+      </section>
+    </main>
+    <script type="module" src="/static/funding.js"></script>
+  </body>
+</html>
