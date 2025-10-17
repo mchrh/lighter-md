@@ -36,6 +36,7 @@ Component | Responsibility
 
 ## Screenshot
 
-![Dashboard screenshot](docs/screenshot.png)
+![Dashboard screenshot](docs/screenshot1.png)
+![Funding screenshot](docs/screenshot2.png)
 
 > Pair with `scripts/dev.sh` or `uv run lighter-md` for local development.
