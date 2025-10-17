@@ -136,8 +136,9 @@
       <div class="header-top">
         <h1>Funding Rate Z-Score</h1>
         <nav class="nav">
-          <a href="/">Markets</a>
-          <a href="/funding" class="active">Signal</a>
+          <a href="/" class="{{ 'active' if active_page == 'markets' else '' }}">Markets</a>
+          <a href="/funding" class="{{ 'active' if active_page == 'funding' else '' }}">Signal</a>
+          <a href="/charts" class="{{ 'active' if active_page == 'charts' else '' }}">Charts</a>
         </nav>
       </div>
     </header>

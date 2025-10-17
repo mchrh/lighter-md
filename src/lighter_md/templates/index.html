@@ -108,8 +108,9 @@
       <div class="header-top">
         <h1>Lighter.xyz Market Dashboard</h1>
         <nav class="nav">
-          <a href="/" class="active">Markets</a>
-          <a href="/funding">Funding Z-Score</a>
+          <a href="/" class="{{ 'active' if active_page == 'markets' else '' }}">Markets</a>
+          <a href="/funding" class="{{ 'active' if active_page == 'funding' else '' }}">Funding Z-Score</a>
+          <a href="/charts" class="{{ 'active' if active_page == 'charts' else '' }}">Charts</a>
         </nav>
       </div>
       <div class="status" id="status">

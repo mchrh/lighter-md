@@ -52,12 +52,23 @@ def create_app() -> FastAPI:
 
 @router.get("/", response_class=HTMLResponse)
 async def index(request: Request) -> HTMLResponse:
-    return templates.TemplateResponse("index.html", {"request": request})
+    return templates.TemplateResponse(
+        "index.html", {"request": request, "active_page": "markets"}
+    )
 
 
 @router.get("/funding", response_class=HTMLResponse)
 async def funding_page(request: Request) -> HTMLResponse:
-    return templates.TemplateResponse("funding.html", {"request": request})
+    return templates.TemplateResponse(
+        "funding.html", {"request": request, "active_page": "funding"}
+    )
+
+
+@router.get("/charts", response_class=HTMLResponse)
+async def charts_page(request: Request) -> HTMLResponse:
+    return templates.TemplateResponse(
+        "charts.html", {"request": request, "active_page": "charts"}
+    )
 
 
 @router.get("/health", response_class=JSONResponse)
